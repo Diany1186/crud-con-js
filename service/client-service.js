@@ -7,11 +7,18 @@ const crearCliente = (nombre,email) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({nombre, email, id: uuid.v4()})
+        body: JSON.stringify({nombre, email, id: uuid.v4()}) //transforma el texto a un objeto json (el uuid fue insertado en el html)
     });
 };
+
+const eliminarCliente = (id) => {
+    return fetch(`http://localhost:3000/perfil/${id}`,{
+        method: "DELETE"
+    })
+}
 
 export const clientServices = {
     listaClientes,      //En las nuevas versiones de js solo se define el objeto una vez y sirve como llave y como valor
     crearCliente,
+    eliminarCliente,
 };
